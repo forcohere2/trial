@@ -4,6 +4,7 @@ html, body {
     padding: 0;
     height: 100%;
     overflow: hidden;
+    font-family: Arial, sans-serif;
 }
 
 .split-container {
@@ -17,49 +18,190 @@ html, body {
     background-color: #f0f0f0; /* Optional styling for the viewer */
 }
 
+/* Hamburger Menu */
 .hamburger-menu {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 12px;
+    left: 12px;
     z-index: 10;
     cursor: pointer;
-    width: 20px;   /* Reduced width */
-    height: 20px;  /* Reduced height */
+    width: 24px;
+    height: 18px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    transition: transform 0.3s ease;
 }
 
 .hamburger-menu div {
     width: 100%;
-    height: 3px;  /* Thinner lines */
-    background-color: #333;
+    height: 2px;
+    background-color: #666;
+    transition: all 0.3s ease;
 }
 
+/* Sidebar Styling */
 .sidebar {
-    display: none; /* Hidden by default */
-    position: absolute;
+    display: none;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 200px;
+    width: 280px;
     height: 100%;
-    background-color: #f4f4f4;
-    padding-top: 50px;
+    background-color: #e9e9e9;
+    padding-top: 60px;
     z-index: 9;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
 }
 
+/* Activate Sidebar */
 .sidebar.active {
     display: block;
+    transform: translateX(0);
 }
 
-.sidebar a {
-    display: block;
+/* Sidebar Heading */
+.sidebar h2 {
+    font-size: 18px;
+    color: #444;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.sidebar input[type="file"],
+.sidebar input[type="text"] {
+    max-width: calc(100% - 8px); /* Adjusts for padding on both sides */
+    margin: 0 auto; /* Centers the input elements */
+    box-sizing: border-box; /* Ensures padding is included in width calculation */
+}
+
+/* Section Styling */
+.sidebar .upload-section,
+.sidebar .ocr-section,
+.sidebar .author-section,
+.sidebar .export-section {
+    margin-bottom: 20px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.sidebar label {
+    font-size: 14px;
+    color: #555;
+    display: inline-block;
+}
+
+/* Upload Section - Inline Checkbox, Label, and Info Icon */
+.upload-section label,
+.upload-section input[type="checkbox"],
+.upload-section span {
+    vertical-align: middle;
+}
+
+.upload-section input[type="checkbox"] {
+    margin: 0 5px 0 0;
+}
+
+/* Style for Info Icon */
+.upload-section span {
+    font-size: 12px;
+    color: #666;
+    cursor: help;
+}
+
+/* Style for Info Icon */
+.ocr-section span {
+    font-size: 12px;
+    color: #666;
+    cursor: help;
+}
+
+/* Inputs and Buttons */
+.sidebar input[type="file"],
+.sidebar input[type="text"],
+.sidebar button {
+    width: 100%;
     padding: 10px;
-    color: black;
-    text-decoration: none;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 8px;
 }
 
-.sidebar a:hover {
-    background-color: #ddd;
+.sidebar button {
+    background-color: #666;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar button:hover {
+    background-color: #555;
+}
+
+/* Checkbox Styling */
+.sidebar input[type="checkbox"] {
+    accent-color: #666; /* Styles the checkboxes */
+}
+
+/* Separator Line */
+.sidebar hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #666, transparent);
+    margin: 15px 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 240px;
+    }
+
+    .hamburger-menu {
+        width: 20px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .hamburger-menu {
+        width: 18px;
+        height: 15px;
+    }
+
+    .sidebar h2 {
+        font-size: 16px;
+    }
+}
+
+.language-selection {
+    text-align: center;
+}
+
+.language-selection > label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px; /* Space between the label and checkboxes */
+}
+
+.language-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 10px; /* Space between checkboxes */
+    justify-items: start; /* Aligns checkboxes to the start of each grid cell */
 }

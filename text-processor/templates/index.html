@@ -19,9 +19,60 @@
 
             <!-- Sidebar Content -->
             <div class="sidebar" id="sidebar">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+                <!-- Heading -->
+                <h2>Advanced Configuration</h2>
+
+                <!-- Upload Section -->
+                <div class="upload-section">
+                    <label>Upload File:</label>
+                    <input type="file" id="file-upload" />
+                    <button type="button" id="upload-button">Upload</button>
+                    <input type="checkbox" id="upload-view-only" />
+                    <label>Viewer Only</label>
+                    <span title="Check this box to upload the document only to update the viewer on the left, keeping the editor unchanged.">&#9432;</span>
+                </div>
+
+                <hr /> <!-- Line separator -->
+
+                <!-- OCR Section -->
+                <div class="ocr-section">
+                    <label>OCR:</label>
+                    
+                    <!-- Enable OCR Checkbox -->
+                    <div>
+                        <input type="checkbox" id="ocr-checkbox" /> 
+                        <label>Enable OCR</label>
+                        <span title="Check this box to perform OCR">&#9432;</span>
+                    </div>
+                    <br>
+                    <!-- Language Selection -->
+                    <div class="language-selection">
+                        <label>Select Languages:</label>
+                        <div class="language-options">
+                            <label><input type="checkbox" id="lang-eng" /> English</label>
+                            <label><input type="checkbox" id="lang-guj" /> Gujarati</label>
+                            <label><input type="checkbox" id="lang-san" /> Sanskrit</label>
+                            <label><input type="checkbox" id="lang-hin" /> Hindi</label>
+                        </div>
+                    </div>
+                </div>
+
+                <hr /> <!-- Line separator -->
+
+                <!-- Author's Name Section -->
+                <div class="author-section">
+                    <label>Author's Name:</label>
+                    <input type="text" id="author-name" placeholder="Enter author's name" />
+                </div>
+
+                <hr /> <!-- Line separator -->
+
+                <!-- Export Section -->
+                <div class="export-section">
+                    <label>Editor Functions:</label>
+                    <button type="button" id="export-pdf-button">Export as PDF</button>
+                    <button type="button" id="clear-editor-button">Clear Editor</button>
+                </div>
             </div>
         </div>
 
