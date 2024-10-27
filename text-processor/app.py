@@ -6,6 +6,7 @@ from pdf2docx import Converter
 import ocrmypdf
 import fitz  # PyMuPDF
 from docx import Document
+import requests
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = "uploads"

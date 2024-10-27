@@ -279,3 +279,24 @@ html, body {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+/* PDF Export Section - Inline Radio Buttons, Label, and Info Icon */
+.author-section label,
+.author-section input[type="radio"]{
+    vertical-align: middle;
+}
+
+/* Style for Radio Buttons */
+.author-section input[type="radio"] {
+    margin: 0 5px 0 0;
+    accent-color: #666; /* Custom color for radio button */
+    transform: scale(1.2); /* Make radio buttons slightly larger for a modern look */
+}
+
+
+/* Align Radio Buttons Vertically with a Little Space */
+.author-section div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}

@@ -3,3 +3,4 @@ Werkzeug>=2.3.3
 pdf2docx
 ocrmypdf
 pymupdf
+requests

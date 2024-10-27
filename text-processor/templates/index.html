@@ -49,7 +49,7 @@
                     <div class="language-selection">
                         <label>Select Languages:</label>
                         <div class="language-options">
-                            <label><input type="checkbox" id="lang-eng" /> English</label>
+                            <label><input type="checkbox" id="lang-eng" checked /> English</label>
                             <label><input type="checkbox" id="lang-guj" /> Gujarati</label>
                             <label><input type="checkbox" id="lang-san" /> Sanskrit</label>
                             <label><input type="checkbox" id="lang-hin" /> Hindi</label>
@@ -63,16 +63,21 @@
                 <div class="author-section">
                     <label>Author's Name:</label>
                     <input type="text" id="author-name" placeholder="Enter author's name" />
+                    <br>
+                    <br>
+                    <label>PDF Export:</label>
+                    <div>
+                        <input type="radio" id="portrait" name="pdf-view" value="portrait" checked />
+                        <label for="portrait">Portrait</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="landscape" name="pdf-view" value="landscape" />
+                        <label for="landscape">Landscape</label>
+                    </div>
                 </div>
 
                 <hr /> <!-- Line separator -->
-
-                <!-- Export Section -->
-                <!-- <div class="export-section">
-                    <label>Editor Functions:</label>
-                    <button type="button" id="export-pdf-button">Export as PDF</button>
-                    <button type="button" id="clear-editor-button" onclick="clearEditorContent()">Clear Editor</button>
-                </div> -->
+                
             </div>
         </div>
 

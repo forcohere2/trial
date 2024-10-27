@@ -95,3 +95,21 @@ function clearEditorContent() {
         }
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const languageCheckboxes = document.querySelectorAll('.language-options input[type="checkbox"]');
+    
+    // Ensure "English" is checked by default
+    document.getElementById('lang-eng').checked = true;
+
+    languageCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            // Ensure at least one checkbox remains checked
+            const anyChecked = Array.from(languageCheckboxes).some(cb => cb.checked);
+            if (!anyChecked) {
+                checkbox.checked = true;
+                alert("At least one language must be selected.");
+            }
+        });
+    });
+});

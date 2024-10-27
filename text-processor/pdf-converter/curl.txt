@@ -1,0 +1,2 @@
+curl -X POST http://localhost:3000/generate-pdf      -H "Content-Type: text/html"      --data-binary "@input.html"      --output output.pdf
+curl -X POST "http://localhost:3000/generate-pdf?orientation=landscape&author=YourAuthorName" -H "Content-Type: text/html" --data-binary "@input.html" --output output.pdf
