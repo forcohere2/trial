@@ -17,6 +17,9 @@ html, body {
     position: relative;
     background-color: #f0f0f0; /* Optional styling for the viewer */
 }
+.editor {
+    background-color: #ffffff; /* Optional styling for the viewer */
+}
 
 /* Hamburger Menu */
 .hamburger-menu {
@@ -204,4 +207,75 @@ html, body {
     grid-template-columns: repeat(2, 1fr); /* 2 columns */
     gap: 10px; /* Space between checkboxes */
     justify-items: start; /* Aligns checkboxes to the start of each grid cell */
+}
+
+/* Editor Buttons Container */
+.editor-buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+/* Styling for both Clear Editor and Export PDF buttons */
+.editor-buttons button,
+#exportButton {
+    padding: 4px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: #c7cace;
+    color: #000000;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    width: 100px; /* Set fixed width for consistency */
+    text-align: center;
+}
+
+/* Hover effect for main buttons */
+.editor-buttons button:hover,
+#exportButton:hover {
+    background-color: #abbfd5;
+}
+
+/* Dropdown container styling */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown content styling */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    z-index: 1;
+    min-width: 140px;
+}
+
+/* Dropdown options styling */
+.dropdown-content button {
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 12px;
+    color: #333;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Hover effect for dropdown options */
+.dropdown-content button:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
 }

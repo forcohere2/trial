@@ -96,6 +96,9 @@ const editorConfig = {
 			'bold',
 			'italic',
 			'underline',
+			'strikethrough',
+			'subscript',
+			'superscript',
 			'|',
 			'link',
 			'insertImage',
@@ -283,7 +286,7 @@ const editorConfig = {
 		]
 	},
 	initialData:
-		'<h2>',
+		'<table><thead><tr><th>Sr.</th><th>V.T</th><th>Granth</th><th>ShastraPath</th><th>Pub. Rem</th><th>In. Rem</th></tr></thead><tbody><tr><td>1</td><td>स्व.</td><td></td><td></td><td></td><td></td></tr></tbody></table>',
 	link: {
 		addTargetToExternalLinks: true,
 		defaultProtocol: 'https://',
@@ -376,9 +379,29 @@ const editorConfig = {
 	}
 };
 
-DecoupledEditor.create(document.querySelector('#editor'), editorConfig).then(editor => {
-	document.querySelector('#editor-toolbar').appendChild(editor.ui.view.toolbar.element);
-	document.querySelector('#editor-menu-bar').appendChild(editor.ui.view.menuBarView.element);
+// Initialize the CKEditor and configure local storage persistence
+DecoupledEditor.create(document.querySelector('#editor'), editorConfig)
+    .then(editor => {
+        // Store the created editor instance in a global variable
+        window.editorInstance = editor;
 
-	return editor;
-});
+        // Load saved content from local storage if available
+        const savedContent = localStorage.getItem('editorContent');
+        if (savedContent) {
+            editor.setData(savedContent);
+        }
+
+        // Save the content to local storage on editor changes
+        editor.model.document.on('change:data', () => {
+            localStorage.setItem('editorContent', editor.getData());
+        });
+
+        // Append toolbar and menu bar to the document
+        document.querySelector('#editor-toolbar').appendChild(editor.ui.view.toolbar.element);
+        document.querySelector('#editor-menu-bar').appendChild(editor.ui.view.menuBarView.element);
+
+        return editor;
+    })
+    .catch(error => {
+        console.error(error);
+    });

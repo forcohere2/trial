@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>CKEditor 5 Sample</title>
-    <link rel="stylesheet" href="/text-processor/static/ckeditor.css">
-    <link rel="stylesheet" href="/text-processor/static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='ckeditor.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.2.0/ckeditor5.css">
 </head>
 <body>
@@ -20,16 +20,16 @@
             <!-- Sidebar Content -->
             <div class="sidebar" id="sidebar">
                 <!-- Heading -->
-                <h2>Advanced Configuration</h2>
+                <h2>Configurations</h2>
 
                 <!-- Upload Section -->
                 <div class="upload-section">
                     <label>Upload File:</label>
                     <input type="file" id="file-upload" />
                     <button type="button" id="upload-button">Upload</button>
-                    <input type="checkbox" id="upload-view-only" />
+                    <!-- <input type="checkbox" id="upload-view-only" />
                     <label>Viewer Only</label>
-                    <span title="Check this box to upload the document only to update the viewer on the left, keeping the editor unchanged.">&#9432;</span>
+                    <span title="Check this box to upload the document only to update the viewer on the left, keeping the editor unchanged.">&#9432;</span> -->
                 </div>
 
                 <hr /> <!-- Line separator -->
@@ -68,15 +68,25 @@
                 <hr /> <!-- Line separator -->
 
                 <!-- Export Section -->
-                <div class="export-section">
+                <!-- <div class="export-section">
                     <label>Editor Functions:</label>
                     <button type="button" id="export-pdf-button">Export as PDF</button>
-                    <button type="button" id="clear-editor-button">Clear Editor</button>
-                </div>
+                    <button type="button" id="clear-editor-button" onclick="clearEditorContent()">Clear Editor</button>
+                </div> -->
             </div>
         </div>
 
         <div class="editor">
+            <div class="editor-buttons">
+                <button type="button" id="clear-editor-top-button" onclick="clearEditorContent()">Clear Editor</button>
+                <div class="dropdown">
+                    <button id="exportButton">Export PDF</button>
+                    <div class="dropdown-content">
+                        <button onclick="exportToPDF()">Export Full PDF</button>
+                        <button onclick="exportfilteredPDF()">Export Filtered PDF</button>
+                    </div>
+                </div>
+            </div>            
             <div class="main-container">
                 <div
                     class="editor-container editor-container_document-editor editor-container_include-minimap editor-container_include-style"
@@ -104,6 +114,6 @@
         }
     }
     </script>
-    <script type="module" src="/text-processor/static/ckeditor.js"></script>
-    <script src="/text-processor/static/main.js"></script></body>
+    <script type="module" src="{{ url_for('static', filename='ckeditor.js') }}"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
 </html>
