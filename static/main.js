@@ -113,3 +113,47 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+async function exportToPDF() {
+    // Get the content from the editor
+    const editorContent = document.getElementById("editor").innerHTML;
+    
+    // Get the author's name
+    const authorName = document.getElementById("author-name").value;
+    
+    // Get the selected orientation
+    const orientation = document.querySelector('input[name="pdf-view"]:checked').value;
+
+    try {
+        // Send a POST request to the Node server
+        const response = await fetch("http://node-server:3000/generate-pdf?orientation=" + orientation + "&author=" + encodeURIComponent(authorName), {
+            method: "POST",
+            headers: {
+                "Content-Type": "text/html"
+            },
+            body: editorContent
+        });
+
+        // Check if the response is successful
+        if (response.ok) {
+            // Convert the response to a Blob (PDF file) and trigger download
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+
+            // Create a temporary link to download the PDF
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "document.pdf";
+            document.body.appendChild(link);
+            link.click();
+
+            // Clean up the temporary URL and link
+            link.remove();
+            window.URL.revokeObjectURL(url);
+        } else {
+            console.error("Failed to generate PDF:", response.statusText);
+        }
+    } catch (error) {
+        console.error("Error while generating PDF:", error);
+    }
+}
